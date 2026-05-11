@@ -7,7 +7,10 @@ This directory contains files for deploying Sub2API on Linux servers.
 | Method | Best For | Setup Wizard |
 |--------|----------|--------------|
 | **Docker Compose** | Quick setup, all-in-one | Not needed (auto-setup) |
+| **Docker Compose (Distributed)** | Multi-instance cluster | Not needed (auto-setup) |
 | **Binary Install** | Production servers, systemd | Web-based wizard |
+
+> **Distributed Cluster Deployment**: See [CLUSTER.md](./CLUSTER.md) ([中文](./CLUSTER_CN.md)) for master-slave cluster setup.
 
 ## Files
 
@@ -15,9 +18,13 @@ This directory contains files for deploying Sub2API on Linux servers.
 |------|-------------|
 | `docker-compose.yml` | Docker Compose configuration (named volumes) |
 | `docker-compose.local.yml` | Docker Compose configuration (local directories, easy migration) |
+| `docker-compose.dev.distributed.yml` | Docker Compose for distributed cluster (master-slave) |
 | `docker-deploy.sh` | **One-click Docker deployment script (recommended)** |
 | `.env.example` | Docker environment variables template |
+| `nginx/nginx.conf` | Nginx configuration for distributed cluster |
 | `DOCKER.md` | Docker Hub documentation |
+| `CLUSTER.md` | Distributed cluster deployment guide |
+| `CLUSTER_CN.md` | 分布式集群部署指南（中文） |
 | `install.sh` | One-click binary installation script |
 | `install-datamanagementd.sh` | datamanagementd 一键安装脚本 |
 | `sub2api.service` | Systemd service unit file |
