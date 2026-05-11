@@ -225,16 +225,6 @@ const loading = ref(false)
 const status = ref<ClusterStatusResponse | null>(null)
 let refreshInterval: ReturnType<typeof setInterval> | null = null
 
-const healthyColor = computed(() => {
-  if (!status.value) return 'text-gray-500'
-  if (status.value.healthy_count === status.value.total_instances) {
-    return 'text-green-600 dark:text-green-400'
-  } else if (status.value.healthy_count > 0) {
-    return 'text-amber-600 dark:text-amber-400'
-  }
-  return 'text-red-600 dark:text-red-400'
-})
-
 function truncateId(id: string): string {
   if (id.length <= 12) return id
   return id.slice(0, 8) + '...'
