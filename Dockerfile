@@ -25,10 +25,9 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # Install dependencies first (better caching)
 COPY frontend/package.json frontend/pnpm-lock.yaml ./
-# pnpm 9.x requires explicit approval for build scripts, use --ignore-scripts to skip
-# or set PNPM_IGNORE_BUILD_SCRIPTS=true to allow them without prompting
-ENV PNPM_ALLOW_IGNORED_BUILD_SCRIPTS=true
-RUN pnpm install --frozen-lockfile
+# pnpm 9.x requires explicit approval for build scripts, skip in CI/Docker
+RUN pnpm install --frozen-lockfile --ignore-scripts && \
+    pnpm rebuild esbuild
 
 # Copy frontend source and build
 COPY frontend/ ./
